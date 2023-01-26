@@ -4,7 +4,7 @@
  * @param {*} horizontal_walls_Size 
  * @returns 
  */
-function rectangularArea(width, length) {
+function rectangularShapeArea(width, length) {
   const checkValue = value => {
     if (value === null ||
       value === undefined ||
@@ -28,7 +28,11 @@ function rectangularArea(width, length) {
   return [false, size];
 }
 
-console.log(rectangularArea(-10, 10), '-->', [true, 'Reikšmė turi būti didesnė už 0']);
-console.log(rectangularArea(10, null), '-->', [true, 'Reikšmė negali būti null']);
-console.log(rectangularArea(10, rectangularArea()), '-->', [true, 'Reikšmė negali būti object']);
-console.log(rectangularArea(10, 10), '-->', [false, 100]);
+console.log(rectangularShapeArea(-10, 10), '-->', [true, 'Reikšmė turi būti didesnė už 0']);
+console.log(rectangularShapeArea(10, -10), '-->', [true, 'Reikšmė turi būti didesnė už 0']);
+console.log(rectangularShapeArea(10, null), '-->', [true, 'Reikšmė negali būti null']);
+console.log(rectangularShapeArea(10, rectangularShapeArea()), '-->', [true, 'Reikšmė negali būti object']);
+console.log(rectangularShapeArea(10, 10), '-->', [false, 100]);
+console.log(rectangularShapeArea(5, 4), '-->', [false, 20]);
+console.log(rectangularShapeArea(2, 8), '-->', [false, 16]);
+
