@@ -76,5 +76,7 @@ function rectangularShapeArea(verticalSideLength, horizontal_walls_Size) {
 
 
 console.log(rectangularShapeArea(-10, 10), '-->', [true, 'Negali buti neigiamas']);
-console.log(rectangularShapeArea(-10, 10), '-->', [true, 'Negali buti neigiamas']);
+console.log(rectangularShapeArea(10, -10), '-->', [true, 'Negali buti neigiamas']);
 console.log(rectangularShapeArea(10, 10), '-->', [false, 100]);
+console.log(rectangularShapeArea(5, 4), '-->', [false, 20]);
+console.log(rectangularShapeArea(2, 8), '-->', [false, 16]);
