@@ -3,76 +3,54 @@ console.clear();
  * Should print notification for each student.
  * @param {*} list 
  */
-function marksAverages_forEvery_student(list) {
-    const notifications = [];
-    for (var j = list.length; j != 0;) {
-        var stud = list[list.length - j--];
+function marksAverages_forEvery_student(students) {
+  const result = [];
 
-        if (stud['name'] == 'Maryte') {
-            let i = 0;
-            var maryteAverage = 0;
-            for (; i < stud['marks'].length; i++) {
-                // should be some sort of validation...
-                // can not remember what...
-                if (true) {
-                    let m = stud['marks'][i];
-                    maryteAverage += m;
-                }
-            }
-            maryteAverage /= stud['marks'].length;
-            // console.log(`${stud['name']} mark average is ${maryteAverage}.`);
-            notifications.push(`${stud['name']} mark average is ${maryteAverage}.`);
-        }
+  for (let student of students) {
+    let marks = student.marks;
+    let sum = 0;
+    let invalidMarks = 0;
 
-        if (stud.name === 'Jonas') {
-            let Count = stud.marks.length;
-            let Sum = 0;
-            while (Count) {
-                if (stud.marks[--Count] <= 10 && stud.marks[Count] % 1 == 0 && stud.marks[Count] > 0) {
-                    Sum = Sum + stud.marks[Count];
-                }
-            }
-            // console.log(`${stud.name} mark average is ${Sum / 4}.`);
-            notifications.push(`${stud.name} mark average is ${Sum / 4}.`);
-        }
-
-        switch (stud.name) {
-            case 'Petras':
-                notifications.push(`${stud.name} mark average is ${stud.marks.reduce((t, m) => t + m) / stud.marks.length}.`);
-                // console.log(`${stud.name} mark average is ${stud.marks.reduce((t, m) => t + m) / stud.marks.length}.`);
-                break;
-
-            default:
-                let s = 0;
-                for (const m of stud['marks']) {
-                    s += m / stud.marks.length;
-                }
-                notifications.push(`${stud.name} mark average is ${s}.`);
-                // console.log(`${stud.name} mark average is ${s}.`);
-                break;
-        }
+    if (!marks || marks.length === 0) {
+      result.push(`${student.name} does not have any marks yet.`);
+      continue;
     }
 
-    return notifications;
+    for (let j = 0; j < marks.length; j++) {
+      if (typeof marks[j] !== 'number') {
+        invalidMarks++;
+      } else {
+        sum += marks[j];
+      }
+    }
+
+    if (invalidMarks) {
+      result.push(`Not possible to count ${student.name} mark average.`);
+    } else {
+      let average = Math.round(sum / (marks.length - invalidMarks));
+      result.push(`${student.name} mark average is ${average}.`);
+    }
+  }
+  return result;
 }
 
 const student = [
-    {
-        name: 'Petras',
-        marks: [10, 2, 8, 4, 6],
-    },
-    {
-        name: 'Maryte',
-        marks: [4, 6, 8, 10],
-    },
-    {
-        name: 'Jonas',
-        marks: [8, 7, 5, 4, -1, 13, 8.7],
-    },
-    {
-        name: 'Ona',
-        marks: [],
-    },
+  {
+    name: 'Petras',
+    marks: [10, 2, 8, 4, 6],
+  },
+  {
+    name: 'Maryte',
+    marks: [4, 6, 8, 10],
+  },
+  {
+    name: 'Jonas',
+    marks: [8, 7, 5, 4, -1, 13, 8.7],
+  },
+  {
+    name: 'Ona',
+    marks: [],
+  },
 ];
 
 
