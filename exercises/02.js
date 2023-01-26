@@ -4,34 +4,20 @@ console.clear();
  * @param {*} list 
  */
 function marksAverages_forEvery_student(students) {
-  const result = [];
+  return students.map(student => {
+    if (!student.marks || !student.marks.length) return `${student.name} does not have any marks yet.`;
 
-  for (let student of students) {
-    let marks = student.marks;
-    let sum = 0;
-    let invalidMarks = 0;
+    const invalidMarks = student.marks.filter(mark => isInvalidMark(mark));
+    if (invalidMarks.length) return `Not possible to count ${student.name}'s mark average`;
 
-    if (!marks || marks.length === 0) {
-      result.push(`${student.name} does not have any marks yet.`);
-      continue;
-    }
+    const sum = student.marks.reduce((a, b) => a + b);
+    const average = Math.round(sum / student.marks.length);
+    return `${student.name} mark average is ${average}.`;
+  });
+}
 
-    for (let j = 0; j < marks.length; j++) {
-      if (typeof marks[j] !== 'number') {
-        invalidMarks++;
-      } else {
-        sum += marks[j];
-      }
-    }
-
-    if (invalidMarks) {
-      result.push(`Not possible to count ${student.name} mark average.`);
-    } else {
-      let average = Math.round(sum / (marks.length - invalidMarks));
-      result.push(`${student.name} mark average is ${average}.`);
-    }
-  }
-  return result;
+function isInvalidMark(mark) {
+  return mark === undefined || mark === null || typeof mark !== 'number';
 }
 
 const student = [
