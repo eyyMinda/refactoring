@@ -1,8 +1,8 @@
 /**
  * 
- * @param {*} verticalSideLength 
- * @param {*} horizontal_walls_Size 
- * @returns 
+ * @param {*} horizontal wall length 
+ * @param {*} vertical wall length 
+ * @returns {[boolean, number|string]} rectuangular area
  */
 function rectangularShapeArea(width, length) {
   const checkValue = value => {
