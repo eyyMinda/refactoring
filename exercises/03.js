@@ -5,6 +5,12 @@ let multiply = 1;
 function fac(list) {
   return list.map(skaicius => skaicius * multiply);
 }
+/**
+ * 
+ * @param {*} Array of Numbers 
+ * @param {*} Multiply each number: 
+ * @returns {Array} Array of Multiplied Numbers
+ */
 function factory(skaiciu_grandinele = [], double = 1) {
   multiply = double;
   // DO NOT EDIT THIS LINE
