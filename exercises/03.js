@@ -5,13 +5,11 @@ let multiply = 1;
 function fac(list) {
   return list.map(skaicius => skaicius * multiply);
 }
-function f_a_c_t_o_r_y(skaiciu_grandinele = [], double = 1) {
+function factory(skaiciu_grandinele = [], double = 1) {
   multiply = double;
   // DO NOT EDIT THIS LINE
   return fac(skaiciu_grandinele);
 }
-
-const factory = f_a_c_t_o_r_y;
 
 // ***********************************
 // DO NOT EDIT CODE BELOW THIS COMMENT
